@@ -10,13 +10,9 @@ config_version=5
 
 [application]
 
-config/name="JustinMinigame"
+config/name="VladMinigame"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Board="*res://board.gd"
 
 [rendering]
 
