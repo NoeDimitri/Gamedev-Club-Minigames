@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ed78pdgnogf1"]
+
+[ext_resource type="Texture2D" uid="uid://cdhhovxyjbjsy" path="res://addBuilding.png" id="1_2jctq"]
+
+[node name="ButtonBuild" type="Button"]
+offset_left = 150.0
+offset_top = 250.0
+offset_right = 222.0
+offset_bottom = 322.0
+scale = Vector2(0.8, 0.8)
+icon = ExtResource("1_2jctq")
+flat = true
+icon_alignment = 1

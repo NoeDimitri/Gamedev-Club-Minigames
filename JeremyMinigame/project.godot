@@ -10,16 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Michael Minigame"
-run/main_scene="res://Main.tscn"
+config/name="Tower Of Doom"
+run/main_scene="res://towerScene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/viewport_width=576
-window/size/viewport_height=1024
-window/handheld/orientation=1
 
 [rendering]
 
