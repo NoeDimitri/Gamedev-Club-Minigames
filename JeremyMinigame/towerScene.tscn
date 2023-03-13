@@ -21,7 +21,9 @@ scale = Vector2(2.55, 2.55)
 texture = ExtResource("1_sjonw")
 
 [node name="CurrencyBackground" type="Sprite2D" parent="."]
-position = Vector2(1109, 71)
+top_level = true
+position = Vector2(1192, 40)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_eptfa")
 script = ExtResource("4_kncgs")
 

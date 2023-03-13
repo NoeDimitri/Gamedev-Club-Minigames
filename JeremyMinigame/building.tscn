@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba2crbk4wyiji"]
+
+[ext_resource type="Texture2D" uid="uid://dtpw4cwodwlo5" path="res://buildingBackground.png" id="1_tbikc"]
+[ext_resource type="Script" path="res://building.gd" id="2_58lg4"]
+
+[node name="building" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_tbikc")
+script = ExtResource("2_58lg4")
