@@ -12,7 +12,8 @@ font_color = Color(0.815686, 0.231373, 0.231373, 1)
 shadow_color = Color(0, 0, 0, 0.466667)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(3, 1)
+position = Vector2(29, 6)
+scale = Vector2(0.885, 1)
 script = ExtResource("1_rwhdp")
 
 [node name="Background" type="Sprite2D" parent="."]
