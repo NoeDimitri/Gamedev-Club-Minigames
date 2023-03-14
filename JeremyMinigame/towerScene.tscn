@@ -1,15 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjnfmm430du0c"]
+[gd_scene load_steps=13 format=3 uid="uid://bjnfmm430du0c"]
 
 [ext_resource type="Script" path="res://towerScene.gd" id="1_rwhdp"]
 [ext_resource type="Texture2D" uid="uid://8s5pxck0hx17" path="res://sunnyBackground.png" id="1_sjonw"]
+[ext_resource type="Texture2D" uid="uid://bkvydml17daw3" path="res://path.png" id="3_7xsvg"]
 [ext_resource type="Texture2D" uid="uid://dgvr7jl1tc0l0" path="res://moneyBackground.png" id="3_eptfa"]
 [ext_resource type="Script" path="res://CurrencyBackground.gd" id="4_kncgs"]
 [ext_resource type="Script" path="res://Currency.gd" id="5_dk4hy"]
+[ext_resource type="Texture2D" uid="uid://cuutl0swnssgf" path="res://clockTime.png" id="7_k7som"]
+[ext_resource type="Script" path="res://Clock.gd" id="8_i2vrd"]
+[ext_resource type="Texture2D" uid="uid://ec6ldpdlo10p" path="res://purchaseMenu.png" id="9_mv08g"]
+[ext_resource type="Script" path="res://buttonPusher.gd" id="11_3ulvk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v6b8f"]
 font_size = 50
-font_color = Color(0.815686, 0.231373, 0.231373, 1)
+font_color = Color(0.964706, 0.894118, 0.835294, 1)
 shadow_color = Color(0, 0, 0, 0.466667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gbtd"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(29, 6)
@@ -21,9 +28,14 @@ position = Vector2(621, 319)
 scale = Vector2(2.55, 2.55)
 texture = ExtResource("1_sjonw")
 
+[node name="Path" type="Sprite2D" parent="."]
+position = Vector2(650, 480)
+scale = Vector2(2.45, 1)
+texture = ExtResource("3_7xsvg")
+
 [node name="CurrencyBackground" type="Sprite2D" parent="."]
 top_level = true
-position = Vector2(1192, 40)
+position = Vector2(1060, 55)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_eptfa")
 script = ExtResource("4_kncgs")
@@ -46,3 +58,40 @@ label_settings = SubResource("LabelSettings_v6b8f")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_dk4hy")
+
+[node name="ClockBackground" type="Sprite2D" parent="."]
+position = Vector2(1164, 180)
+texture = ExtResource("7_k7som")
+
+[node name="Clock" type="Label" parent="ClockBackground"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -57.0
+offset_right = 49.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_stretch_ratio = 0.0
+text = "0:0"
+label_settings = SubResource("LabelSettings_v6b8f")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_i2vrd")
+
+[node name="CharactersBackground" type="Sprite2D" parent="."]
+position = Vector2(530, 48)
+texture = ExtResource("9_mv08g")
+
+[node name="buttonPusher" type="Area2D" parent="CharactersBackground"]
+position = Vector2(-480, 0)
+script = ExtResource("11_3ulvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharactersBackground/buttonPusher"]
+shape = SubResource("RectangleShape2D_6gbtd")
+
+[connection signal="towerBuilt" from="." to="CurrencyBackground/Currency" method="_on_node_2d_tower_built"]
