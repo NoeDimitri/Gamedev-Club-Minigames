@@ -31,11 +31,9 @@ func _ready():
 		buttons[index].buttonIndex = index
 		buttons[index].buildButtonPressed.connect(buildTower)
 		buttons[index].position = Vector2(base_locations[index][0], base_locations[index][1])
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	moneyAmount = currencyNode.moneyAmount
 	if moneyAmount < towerCost and buttonsShown:
 		buttonsShown = false
@@ -47,7 +45,6 @@ func _process(delta):
 		for key in buttons:
 			if buttons[key] != null:
 				buttons[key].visible = true
-
 
 func buildTower(index):
 	if moneyAmount >= towerCost:

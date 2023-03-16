@@ -1,11 +1,21 @@
-extends Sprite2D
+extends Area2D
 
-var can_grab = true
-var grabbed_offset = Vector2()
+var canDrag = false
+
+signal placingAttempted
+
+var copy
+var carried
 
 func _ready():
-	grabbed_offset = position
+	copy = preload("res://button_pusher.tscn")
 
-func _process(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_grab:
-		position = get_global_mouse_position() + grabbed_offset
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseMotion:
+		if event.button_mask == 1 and event.pressure == 1.00:
+			if carried == null:
+				carried = copy.instantiate()
+				print("goodbye")
+				carried.global_position = get_global_mouse_position()
+				carried.visible = true
+				get_tree().root.add_child(carried)

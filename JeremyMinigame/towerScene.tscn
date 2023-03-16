@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjnfmm430du0c"]
+[gd_scene load_steps=14 format=3 uid="uid://bjnfmm430du0c"]
 
 [ext_resource type="Script" path="res://towerScene.gd" id="1_rwhdp"]
 [ext_resource type="Texture2D" uid="uid://8s5pxck0hx17" path="res://sunnyBackground.png" id="1_sjonw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Clock.gd" id="8_i2vrd"]
 [ext_resource type="Texture2D" uid="uid://ec6ldpdlo10p" path="res://purchaseMenu.png" id="9_mv08g"]
 [ext_resource type="Script" path="res://buttonPusher.gd" id="11_3ulvk"]
+[ext_resource type="Texture2D" uid="uid://cgarc8nwateuk" path="res://buttonPusher.png" id="11_klyso"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v6b8f"]
 font_size = 50
@@ -84,14 +85,22 @@ vertical_alignment = 1
 script = ExtResource("8_i2vrd")
 
 [node name="CharactersBackground" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(530, 48)
 texture = ExtResource("9_mv08g")
 
 [node name="buttonPusher" type="Area2D" parent="CharactersBackground"]
+z_index = 1
 position = Vector2(-480, 0)
 script = ExtResource("11_3ulvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharactersBackground/buttonPusher"]
+z_index = 1
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_6gbtd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharactersBackground/buttonPusher"]
+z_index = 1
+texture = ExtResource("11_klyso")
 
 [connection signal="towerBuilt" from="." to="CurrencyBackground/Currency" method="_on_node_2d_tower_built"]
