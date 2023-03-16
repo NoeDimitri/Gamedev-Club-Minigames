@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjnfmm430du0c"]
+[gd_scene load_steps=13 format=3 uid="uid://bjnfmm430du0c"]
 
 [ext_resource type="Script" path="res://towerScene.gd" id="1_rwhdp"]
 [ext_resource type="Texture2D" uid="uid://8s5pxck0hx17" path="res://sunnyBackground.png" id="1_sjonw"]
 [ext_resource type="Texture2D" uid="uid://bkvydml17daw3" path="res://path.png" id="3_7xsvg"]
 [ext_resource type="Texture2D" uid="uid://dgvr7jl1tc0l0" path="res://moneyBackground.png" id="3_eptfa"]
-[ext_resource type="Script" path="res://CurrencyBackground.gd" id="4_kncgs"]
 [ext_resource type="Script" path="res://Currency.gd" id="5_dk4hy"]
 [ext_resource type="Texture2D" uid="uid://cuutl0swnssgf" path="res://clockTime.png" id="7_k7som"]
 [ext_resource type="Script" path="res://Clock.gd" id="8_i2vrd"]
@@ -39,7 +38,6 @@ top_level = true
 position = Vector2(1060, 55)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_eptfa")
-script = ExtResource("4_kncgs")
 
 [node name="Currency" type="Label" parent="CurrencyBackground"]
 anchors_preset = 8
@@ -104,3 +102,4 @@ z_index = 1
 texture = ExtResource("11_klyso")
 
 [connection signal="towerBuilt" from="." to="CurrencyBackground/Currency" method="_on_node_2d_tower_built"]
+[connection signal="moneyUpdated" from="CurrencyBackground/Currency" to="." method="_on_currency_money_updated"]

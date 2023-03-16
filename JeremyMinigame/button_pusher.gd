@@ -18,6 +18,7 @@ var hypotheticalDest
 
 var currencyNode
 
+
 func _ready():
 	initialPos = self.position
 	readyToPlace = false
@@ -66,6 +67,8 @@ func _on_area_shape_entered(_area_rid, area, area_shape_index, _local_shape_inde
 func _on_placing_attempted(_name):
 	detectionEnabled = false
 	
-	if currencyNode.moneyAmount >= 100:
+	if currencyNode.moneyAmount >= 50:
 		hypotheticalDest.find_parent("*").members[hypotheticalDest] = "buttonPusher"
-		currencyNode.moneyAmount -= 100
+		currencyNode.moneyAmount -= 50
+		currencyNode.updateMoney()
+	hypotheticalDest.find_parent("*").updateIcons()

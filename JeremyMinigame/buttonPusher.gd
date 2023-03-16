@@ -18,4 +18,4 @@ func _input_event(_viewport, event, _shape_idx):
 				print("goodbye")
 				carried.global_position = get_global_mouse_position()
 				carried.visible = true
-				get_tree().root.add_child(carried)
+				get_node("/root/Node2D").add_child(carried)
