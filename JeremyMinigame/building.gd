@@ -1,5 +1,7 @@
 extends Sprite2D
 
+class_name Building
+
 @export var towerIndex: int
 var members
 var time: float

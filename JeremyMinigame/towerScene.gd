@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name TowerScene
+
 var moneyAmount
 var currencyNode
 
@@ -20,6 +22,7 @@ func _ready():
 	button = preload("res://button_build.tscn")
 	tower = preload("res://building.tscn")
 	currencyNode = get_node("CurrencyBackground/Currency")
+	buttonsShown = true
 	
 	time = 0
 	numTowers = 0
@@ -48,12 +51,12 @@ func buildTower(index):
 
 func _on_currency_money_updated():
 	moneyAmount = currencyNode.moneyAmount
-	if moneyAmount < towerCost and not buttonsShown:
+	if moneyAmount < towerCost and buttonsShown:
 		buttonsShown = false
 		for key in buttons:
 			if buttons[key] != null:
 				buttons[key].visible = false
-	elif buttonsShown:
+	elif moneyAmount >= towerCost and not buttonsShown:
 		buttonsShown = true
 		for key in buttons:
 			if buttons[key] != null:

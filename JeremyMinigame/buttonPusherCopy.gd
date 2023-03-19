@@ -1,26 +1,20 @@
 extends Area2D
 
-var canDrag = false
+class_name ButtonPusherCopy
 
 var buttonPusherSprite = preload("res://buttonPusher.png")
-
-var initialPos
-
 var readyToPlace
-
 var dragging
 
 signal placingAttempted
 
 var detectionEnabled
-
 var hypotheticalDest
-
 var currencyNode
 
+var buttonPusherCost = 25
 
 func _ready():
-	initialPos = self.position
 	readyToPlace = false
 	dragging = false
 	detectionEnabled = true
@@ -41,8 +35,8 @@ func _on_area_shape_exited(_area_rid, area, area_shape_index, _local_shape_index
 		var other_shape_owner = area.shape_find_owner(area_shape_index)
 		var other_shape_node = area.shape_owner_get_owner(other_shape_owner)
 		
-		var grandparent = other_shape_node.find_parent("*").find_parent("building")
-		if grandparent != null:
+		var grandparent = other_shape_node.find_parent("*").find_parent("*")
+		if grandparent is Building:
 			if grandparent.members[other_shape_node.find_parent("*")] == null:
 				self.visible = true
 				readyToPlace = false
@@ -55,8 +49,8 @@ func _on_area_shape_entered(_area_rid, area, area_shape_index, _local_shape_inde
 		var other_shape_owner = area.shape_find_owner(area_shape_index)
 		var other_shape_node = area.shape_owner_get_owner(other_shape_owner)
 		
-		var grandparent = other_shape_node.find_parent("*").find_parent("building")
-		if grandparent != null:
+		var grandparent = other_shape_node.find_parent("*").find_parent("*")
+		if grandparent is Building:
 			if grandparent.members[other_shape_node.find_parent("*")] == null:
 				readyToPlace = true
 				self.visible = false
@@ -67,8 +61,8 @@ func _on_area_shape_entered(_area_rid, area, area_shape_index, _local_shape_inde
 func _on_placing_attempted(_name):
 	detectionEnabled = false
 	
-	if currencyNode.moneyAmount >= 50:
+	if currencyNode.moneyAmount >= buttonPusherCost:
 		hypotheticalDest.find_parent("*").members[hypotheticalDest] = "buttonPusher"
-		currencyNode.moneyAmount -= 50
+		currencyNode.moneyAmount -= buttonPusherCost
 		currencyNode.updateMoney()
 	hypotheticalDest.find_parent("*").updateIcons()
