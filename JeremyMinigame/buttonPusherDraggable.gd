@@ -1,20 +1,16 @@
 extends Area2D
 
+#class is the character from the character list gui. Can be broadened
 class_name ButtonPusherDraggable
 
-var canDrag = false
-
-signal placingAttempted
-
-var copy
+#copy of the character preloaded, and the variable to store the carried character when clicked
+var copy = preload("res://buttonPusherCopy.tscn")
 var carried
 
-func _ready():
-	copy = preload("res://buttonPusherCopy.tscn")
-
+#detect click and create draggable sprite
 func _input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseMotion:
-		if event.button_mask == 1 and event.pressure == 1.00:
+	if event is InputEventMouseButton:
+		if event.button_mask == 1:
 			if carried == null:
 				carried = copy.instantiate()
 				carried.global_position = get_global_mouse_position()

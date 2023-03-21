@@ -1,28 +1,25 @@
 extends Label
 
-@export var gameTime: float
-var dayLength
-var dayActive
+#tracker of the game time from 0 for use in the clock
+@export var gameTime = 0.0
 
-# Called when the node enters the scene tree for the first time.
+#a day is 12 hours by 60 minutes where minutes increment by 6
+var dayLength = 12 * 6
+var dayActive = true
+
+#start the clock at the correct time
 func _ready():
-
-	gameTime = 0
-	dayActive = true
-	dayLength = 12 * 6
 	updateClock()
-	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#update the local time, and the local clock when needed
 func _process(delta):
 	if dayActive:
 		gameTime += delta
 		
 		if ceil(gameTime) != ceil(gameTime - delta):
 			updateClock()
-	
 
+#clock formatted as xx:yy with hours from 1 to 12, and minutes from 00 to 50
 func updateClock():
 	var dayDuration = int(gameTime) % dayLength
 	var hours = str(dayDuration / 6 + 1)
