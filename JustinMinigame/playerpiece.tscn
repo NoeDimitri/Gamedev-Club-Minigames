@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct7d7hvufqvta"]
+
+[ext_resource type="Script" path="res://playerpiece.gd" id="1_62igx"]
+[ext_resource type="Texture2D" uid="uid://cfhqweabvo45b" path="res://greyBall.png" id="2_54f2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jphwg"]
+radius = 32.0
+
+[node name="playerpiece" type="RigidBody2D"]
+position = Vector2(96, -32)
+lock_rotation = true
+script = ExtResource("1_62igx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0.337255, 1, 1)
+shape = SubResource("CircleShape2D_jphwg")
+
+[node name="spriteRenderer" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("2_54f2k")

@@ -18,10 +18,14 @@ func _ready():
 		boardPieces.append([0,0,0,0,0,0])
 		boardHeight.append(0)
 	
+func hasSpace(columnNum):
+	if boardHeight[columnNum] < maxHeight:
+		return true
+	else:
+		return false
 	
 func addPiece(columnNum):
-	if boardHeight[columnNum] >= maxHeight:
-		#print("too big!!")
+	if not hasSpace(columnNum):
 		return
 	boardPieces[columnNum][boardHeight[columnNum]] = pieceDict[currentPlayer]
 	boardHeight[columnNum] += 1
@@ -40,7 +44,6 @@ func checkWin(columnChosen):
 	var xCoord = columnChosen
 	var yCoord = boardHeight[columnChosen]-1
 	var playerNum = pieceDict[currentPlayer]
-	#print(extendDirection(xCoord, yCoord, 1, 0, playerNum) + extendDirection(xCoord, yCoord, -1, 0, playerNum))
 	#Horizontal Check
 	if extendDirection(xCoord, yCoord, 1, 0, playerNum) + extendDirection(xCoord, yCoord, -1, 0, playerNum) >= 3:
 		return true

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://board.gd" id="1_37bus"]
 [ext_resource type="PackedScene" uid="uid://cdk1ra6y5j28b" path="res://column.tscn" id="2_33jan"]
 
-[node name="board" type="Node2D"]
+[node name="connect4" type="Node2D"]
 script = ExtResource("1_37bus")
 
 [node name="columns" type="Node2D" parent="."]
@@ -13,46 +13,45 @@ offset_left = 256.0
 offset_top = 80.0
 offset_right = 320.0
 offset_bottom = 580.0
-columnVal = 1
 
 [node name="column2" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 320.0
 offset_top = 80.0
 offset_right = 384.0
 offset_bottom = 580.0
-columnVal = 2
+columnVal = 1
 
 [node name="column3" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 384.0
 offset_top = 80.0
 offset_right = 448.0
 offset_bottom = 580.0
-columnVal = 3
+columnVal = 2
 
 [node name="column4" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 448.0
 offset_top = 80.0
 offset_right = 512.0
 offset_bottom = 580.0
-columnVal = 4
+columnVal = 3
 
 [node name="column5" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 512.0
 offset_top = 80.0
 offset_right = 576.0
 offset_bottom = 580.0
-columnVal = 5
+columnVal = 4
 
 [node name="column6" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 576.0
 offset_top = 80.0
 offset_right = 640.0
 offset_bottom = 580.0
-columnVal = 6
+columnVal = 5
 
 [node name="column7" parent="columns" instance=ExtResource("2_33jan")]
 offset_left = 640.0
 offset_top = 80.0
 offset_right = 704.0
 offset_bottom = 580.0
-columnVal = 7
+columnVal = 6
