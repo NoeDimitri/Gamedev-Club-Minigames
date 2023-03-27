@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgegbmg7pvvob"]
+[gd_scene load_steps=11 format=3 uid="uid://dgegbmg7pvvob"]
 
 [ext_resource type="Script" path="res://UserInterface.gd" id="1_1wsof"]
 [ext_resource type="Texture2D" uid="uid://ddltq75v6jb3n" path="res://Assets/board-background.png" id="2_s1mm8"]
 [ext_resource type="Script" path="res://Grid.gd" id="2_vfkys"]
 [ext_resource type="Texture2D" uid="uid://ijs1mqg6b0m1" path="res://Assets/Background.png" id="3_6a2yr"]
+[ext_resource type="PackedScene" uid="uid://dmb4m1heuxubm" path="res://Pieces/PieceTwo.tscn" id="3_u0r88"]
+[ext_resource type="PackedScene" uid="uid://bspkiy4d8edvo" path="res://Pieces/PieceFour.tscn" id="4_31f16"]
 [ext_resource type="Script" path="res://TouchControl.gd" id="4_j5d8y"]
 [ext_resource type="Script" path="res://KeyboardControl.gd" id="5_srny1"]
 [ext_resource type="Script" path="res://ControllerControl.gd" id="6_xelmb"]
+[ext_resource type="PackedScene" uid="uid://b5tdcxn7rv1ij" path="res://PieceBackground.tscn" id="8_b2swr"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(-3, -1)
 
 [node name="UserInterface" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1164.0
@@ -39,23 +44,6 @@ theme_override_font_sizes/font_size = 32
 text = "High Score: 0
 "
 
-[node name="Sprite2D" type="Sprite2D" parent="UserInterface"]
-
-[node name="Grid" type="Node2D" parent="UserInterface"]
-script = ExtResource("2_vfkys")
-
-[node name="GridBackground" type="Sprite2D" parent="UserInterface"]
-z_index = 1
-position = Vector2(280, 720)
-texture = ExtResource("2_s1mm8")
-
-[node name="TextureRect" type="TextureRect" parent="UserInterface"]
-layout_mode = 0
-offset_top = 2.0
-offset_right = 576.0
-offset_bottom = 1026.0
-texture = ExtResource("3_6a2yr")
-
 [node name="TouchControl" type="Node2D" parent="."]
 script = ExtResource("4_j5d8y")
 
@@ -65,6 +53,24 @@ script = ExtResource("5_srny1")
 [node name="ControllerControl" type="Node2D" parent="."]
 script = ExtResource("6_xelmb")
 
-[connection signal="move" from="TouchControl" to="UserInterface/Grid" method="_on_touch_control_move"]
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("2_vfkys")
+piece_two = ExtResource("3_u0r88")
+piece_four = ExtResource("4_31f16")
+background_piece = ExtResource("8_b2swr")
+
+[node name="GridBackground" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(280, 720)
+texture = ExtResource("2_s1mm8")
+
+[node name="MainBackground" type="TextureRect" parent="."]
+offset_top = 2.0
+offset_right = 576.0
+offset_bottom = 1026.0
+texture = ExtResource("3_6a2yr")
+
+[connection signal="move" from="TouchControl" to="Grid" method="_on_touch_control_move"]
 [connection signal="move" from="KeyboardControl" to="UserInterface" method="_on_keyboard_control_move"]
-[connection signal="move" from="ControllerControl" to="UserInterface/Grid" method="_on_controller_control_move"]
+[connection signal="move" from="ControllerControl" to="Grid" method="_on_controller_control_move"]

@@ -3,51 +3,33 @@ extends Node2D
 # creates pieces, finds blank spaces, or moving pieces
 # and deleting/combining pieces
 
-# each image is named its number + Tile + .png
-var tiles = [
-	"res://assets/tiles/2 Tile.png",
-	"res://assets/tiles/4 Tile.png",
-	"res://assets/tiles/8 Tile.png",
-	"res://assets/tiles/16 Tile.png",
-	"res://assets/tiles/32 Tile.png",
-	"res://assets/tiles/64 Tile.png",
-	"res://assets/tiles/128 Tile.png",
-	"res://assets/tiles/256 Tile.png",
-	"res://assets/tiles/512 Tile.png",
-	"res://assets/tiles/1024 Tile.png",
-	"res://assets/tiles/2048 Tile.png",
-	"res://assets/tiles/4096 Tile.png",
-	"res://assets/tiles/8192 Tile.png",
-	"res://assets/tiles/16384 Tile.png",
-	"res://assets/tiles/32768 Tile.png",
-	"res://assets/tiles/65536 Tile.png",
-	
-]
 
-var tiles_to_name_dict = {
-	"res://assets/tiles/2 Tile.png": "2",
-	"res://assets/tiles/4 Tile.png": "4",
-	"res://assets/tiles/8 Tile.png": "8",
-	"res://assets/tiles/16 Tile.png": "16",
-	"res://assets/tiles/32 Tile.png": "32",
-	"res://assets/tiles/64 Tile.png": "64",
-	"res://assets/tiles/128 Tile.png": "128",
-	"res://assets/tiles/256 Tile.png": "256",
-	"res://assets/tiles/512 Tile.png": "512",
-	"res://assets/tiles/1024 Tile.png": "1024",
-	"res://assets/tiles/2048 Tile.png": "2048",
-	"res://assets/tiles/4096 Tile.png": "4096",
-	"res://assets/tiles/8192 Tile.png": "8192",
-	"res://assets/tiles/16384 Tile.png": "16384",
-	"res://assets/tiles/32768 Tile.png": "32768",
-	"res://assets/tiles/65536 Tile.png": "65536",
-}
+
 var width := 4
 var height := 4
 var board := []
 var x_start := 96
-var y_start := 796
+var y_start := 912
 var offset := 128
+# define pieces for the board
+@export var piece_two: PackedScene
+@export var piece_four: PackedScene
+@export var background_piece: PackedScene
+# @export var piece_eight: PackedScene
+# @export var piece_sixteen: PackedScene
+# @export var piece_thirtytwo: PackedScene
+# @export var piece_64: PackedScene
+# @export var piece_128: PackedScene
+# @export var piece_256: PackedScene
+# @export var piece_512: PackedScene
+# @export var piece_1024: PackedScene
+# @export var piece_2048: PackedScene
+# @export var piece_4096: PackedScene
+# @export var piece_8192: PackedScene
+# @export var piece_16384: PackedScene
+# @export var piece_32768: PackedScene
+# @export var piece_65536: PackedScene
+
 func make_2d_array():
 	"""
 	creates a 4 x 4 array of 0s
@@ -86,6 +68,9 @@ func is_blank_space():
 			if board[i][j] == 0:
 				return true
 	return false
+func move_all_pieces(direction: Vector2):
+	pass
+	
 func pixel_to_grid(pixel_position: Vector2):
 	"""
 	converts pixel coordinates to grid coordinates
@@ -97,20 +82,14 @@ func pixel_to_grid(pixel_position: Vector2):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	board = make_2d_array()
-	# create a scene for each tile
-	for i in range(0, tiles.size()):
-		var tile = load(tiles[i])
-		var tile_scene = tile.instance()
-		add_child(tile_scene)
-		tile_scene.hide()
-		# for the name of the scene use the dict 
-		tile_scene.name = tiles_to_name_dict[tiles[i]]
+	generate_background()
 
 
 
 
 
-	pass # Replace with function body.
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -120,13 +99,28 @@ func _process(delta):
 
 func _on_touch_control_move(direction: Vector2):
 	# move the current pieces one space based on direction
-
+	move_all_pieces(direction)
 
 	pass # Replace with function body.
 
 
 func _on_controller_control_move(direction: Vector2):
+	move_all_pieces(direction)
 	pass # Replace with function body.
 	
 func _on_keyboard_control_move(direction: Vector2):
+	move_all_pieces(direction)
 	pass # Replace with function body.
+
+func generate_new_piece():
+	if is_blank_space():
+		pass 
+	else:
+		print("no more room")
+	
+func generate_background():
+	for i in width:
+		for j in height:
+			var temp = background_piece.instance()
+			add_child(temp)
+			temp.position = grid_to_pixel(Vector2(i, j))

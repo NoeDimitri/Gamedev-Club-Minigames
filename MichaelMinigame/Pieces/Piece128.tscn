@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://qcp1kraifkl1"]
+
+[ext_resource type="PackedScene" uid="uid://dmb4m1heuxubm" path="res://Pieces/PieceTwo.tscn" id="1_m6dmh"]
+[ext_resource type="PackedScene" uid="uid://f134cp1372vo" path="res://Pieces/Piece256.tscn" id="2_hkhnq"]
+[ext_resource type="Texture2D" uid="uid://cgm2kn8rsmtm6" path="res://Assets/tiles/128 Tile.png" id="2_rl7ya"]
+
+[node name="Piece128" instance=ExtResource("1_m6dmh")]
+value = 128
+next_value = ExtResource("2_hkhnq")
+
+[node name="2Tile" parent="." index="0"]
+texture = ExtResource("2_rl7ya")

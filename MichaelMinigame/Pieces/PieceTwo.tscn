@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmb4m1heuxubm"]
+
+[ext_resource type="PackedScene" uid="uid://bi0pvutc8uudc" path="res://Piece.tscn" id="1_bbaxr"]
+[ext_resource type="PackedScene" uid="uid://bspkiy4d8edvo" path="res://Pieces/PieceFour.tscn" id="2_uctur"]
+
+[node name="PieceTwo" instance=ExtResource("1_bbaxr")]
+value = 2
+next_value = ExtResource("2_uctur")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://na8p8lhn1cts"]
+
+[ext_resource type="PackedScene" uid="uid://cevaushjb0rc0" path="res://Pieces/PieceSixtyFour.tscn" id="2_cii2x"]
+[ext_resource type="Texture2D" uid="uid://f4pvvy8hdnm3" path="res://Assets/tiles/32 Tile.png" id="2_h466v"]
+
+[node name="PieceThirtyTwo"]
+position = Vector2(10, 0)
+value = 32
+next_value = ExtResource("2_cii2x")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_h466v")

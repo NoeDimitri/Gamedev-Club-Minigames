@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck8lm4hhdqs2i"]
+
+[ext_resource type="PackedScene" uid="uid://na8p8lhn1cts" path="res://Pieces/PieceThirtyTwo.tscn" id="1_16hyw"]
+[ext_resource type="Texture2D" uid="uid://bwsq13qf0gqun" path="res://Assets/tiles/16 Tile.png" id="2_cmhv5"]
+[ext_resource type="Texture2D" uid="uid://riybpww13h4a" path="res://Assets/tiles/8 Tile.png" id="2_sdv02"]
+
+[sub_resource type="PackedScene" id="PackedScene_7ky11"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PieceSixteen", "value", "next_value", "Sprite", "texture"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 2147483647, 262147, -1, 1, 4, 2, 0),
+"variants": [16, ExtResource("1_16hyw"), ExtResource("2_cmhv5")],
+"version": 3
+}
+
+[node name="PieceEight"]
+value = 8
+next_value = SubResource("PackedScene_7ky11")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_sdv02")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdeax2iu1dvvy"]
+
+[ext_resource type="PackedScene" uid="uid://cei11sjfvxris" path="res://Pieces/PieceTwo.tscn" id="1_ehye0"]
+[ext_resource type="Texture2D" uid="uid://6hxdmnf7w3g3" path="res://Assets/tiles/65536 Tile.png" id="2_gbmp7"]
+
+[node name="Piece65536" instance=ExtResource("1_ehye0")]
+value = 65536
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_gbmp7")

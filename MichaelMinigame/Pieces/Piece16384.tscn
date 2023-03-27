@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc33yq3edp7jw"]
+
+[ext_resource type="PackedScene" uid="uid://cei11sjfvxris" path="res://Pieces/PieceTwo.tscn" id="1_g8odq"]
+[ext_resource type="PackedScene" uid="uid://y6w2sfv8g0eo" path="res://Pieces/Piece32768.tscn" id="2_5h0yx"]
+[ext_resource type="Texture2D" uid="uid://b5k0kxv663i5b" path="res://Assets/tiles/16384 Tile.png" id="2_8hr7p"]
+
+[node name="Piece16384" instance=ExtResource("1_g8odq")]
+value = 16384
+next_value = ExtResource("2_5h0yx")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_8hr7p")

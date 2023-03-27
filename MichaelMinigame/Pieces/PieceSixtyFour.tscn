@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cevaushjb0rc0"]
+
+[ext_resource type="PackedScene" uid="uid://cei11sjfvxris" path="res://Pieces/PieceTwo.tscn" id="1_rrqgn"]
+[ext_resource type="Texture2D" uid="uid://b6ejbg4qt441g" path="res://Assets/tiles/64 Tile.png" id="2_atg6x"]
+[ext_resource type="PackedScene" path="res://Pieces/Piece128.tscn" id="2_qt1wl"]
+
+[node name="PieceSixtyFour" instance=ExtResource("1_rrqgn")]
+value = 64
+next_value = ExtResource("2_qt1wl")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_atg6x")
